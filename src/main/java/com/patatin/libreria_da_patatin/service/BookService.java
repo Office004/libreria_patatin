@@ -28,8 +28,12 @@ public class BookService {
         return bookRepository.findById(id);
     }
 
+//    public boolean hasDuplicati() {
+//        return !BookRepository.findGruppiDuplicati().isEmpty();
+//    }
 
-
-
+//    public List<Object[]> getGruppiDuplicati() {
+//        return BookRepository.findGruppiDuplicati();
+//    }
 
 }
