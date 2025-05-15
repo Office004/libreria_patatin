@@ -19,21 +19,21 @@ public class BookService {
     }
 
 
-    public List<Book> getAllLibri() {
+    public List<Book> getAllBook() {
         return bookRepository.findAll();
     }
 
 
-    public Optional<Book> getId(Long id){
-        return bookRepository.findById(id);
+    public Book getId(Long id){
+        return bookRepository.findById(id).orElse((null));
     }
 
-//    public boolean hasDuplicati() {
-//        return !BookRepository.findGruppiDuplicati().isEmpty();
-//    }
+    public boolean hasDuplicates() {
+        return !bookRepository.findDuplicateGroups().isEmpty();
+    }
 
-//    public List<Object[]> getGruppiDuplicati() {
-//        return BookRepository.findGruppiDuplicati();
-//    }
+    public List<Object[]> getDuplicatedGroups() {
+        return bookRepository.findDuplicateGroups();
+    }
 
 }

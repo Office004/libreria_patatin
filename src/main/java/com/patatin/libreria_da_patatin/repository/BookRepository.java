@@ -7,13 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface BookRepository extends JpaRepository<Book,Long> {
-
-    @Query("SELECT b.autore, b.genere, b.lingua, b.etaConsigliata, COUNT(l) " +
+    @Query("SELECT b.author, b.genre, b.language, b.recommendedAge, COUNT(b) " +
             "FROM Book b " +
-            "GROUP BY b.autore, b.genere, b.lingua, b.etaConsigliata " +
-            "HAVING COUNT(l) > 1")
-    List<Object[]> findGruppiDuplicati();
-
+            "GROUP BY b.author, b.genre, b.language, b.recommendedAge " +
+            "HAVING COUNT(b) > 1")
+    List<Object[]> findDuplicateGroups();
 }
